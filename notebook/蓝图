@@ -1,0 +1,11 @@
+1.定义蓝图(app/admin/__init__.py)
+    from flask import Blueprint
+    home = Blueprint("home", __name__)
+    from . import views
+2.注册蓝图(app/__init__.py)
+    from app.home import home as home_blueprint
+    app.register_blueprint(home_blueprint)
+3.调用蓝图(app/admin/views.py)
+    from . import home
+    @home.route('/')
+    def ....
